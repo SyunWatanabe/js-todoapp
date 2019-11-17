@@ -35,6 +35,10 @@ export class App {
     formElement.addEventListener("submit", (event) => {
       // 本来のsubmitイベントの動作を止める
       event.preventDefault();
+      if (inputElement.value === "" || !inputElement.value.match(/\S/g)) {
+        alert("文字を入力してください")
+        return
+      }
       this.todoListModel.addTodo(new TodoItemModel({
         title: inputElement.value,
         completed: false
